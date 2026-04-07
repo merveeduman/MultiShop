@@ -1,0 +1,14 @@
+﻿using MultiShop.Catalog.Dtos.ProductImageDtos;
+
+namespace MultiShop.Catalog.Services.ProductImageServices
+{
+    public interface IProductImageService
+    {
+
+            Task<ResultProductImageDto> CreateProductImageAsync(CreateProductImageDto createProductImageDto);
+            Task<ResultProductImageDto> GetProductImageByIdAsync(string id);
+            Task<List<ResultProductImageDto>> GetAllProductImagesAsync();
+            Task<ResultProductImageDto> UpdateProductImageAsync(UpdateProductImageDto updateProductImageDto);
+            Task DeleteProductImageAsync(string id);
+    }
+}
