@@ -19,30 +19,30 @@ namespace MultiShop.Catalog.Services.ProductServices
             _mapper = mapper;
         }
 
-        public async Task CreateProduct(CreateProductDto createProductDto)
+        public async Task CreateProductAsync(CreateProductDto createProductDto)
         {
             var values = _mapper.Map<Product>(createProductDto);
             await _productCollection.InsertOneAsync(values);
         }
 
-        public async Task DeleteProduct(string id)
+        public async Task DeleteProductAsync(string id)
         {
             await _productCollection.DeleteOneAsync(x => x.ProductID == id);
         }
 
-        public async Task<List<ResultProductDto>> GetAllProducts()
+        public async Task<List<ResultProductDto>> GetAllProductsAsync()
         {
             var values = await _productCollection.Find(x => true).ToListAsync();
             return _mapper.Map<List<ResultProductDto>>(values);
         }
 
-        public async Task<ResultProductDto> GetProductById(string id)
+        public async Task<ResultProductDto> GetByIdProductAsync(string id)
         {
             var value = await _productCollection.Find(x => x.ProductID == id).FirstOrDefaultAsync();
             return _mapper.Map<ResultProductDto>(value);
         }
 
-        public async Task UpdateProduct(UpdateProductDto updateProductDto)
+        public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
         {
             var values = _mapper.Map<Product>(updateProductDto);
             await _productCollection.FindOneAndReplaceAsync(x => x.ProductID == updateProductDto.ProductID, values);

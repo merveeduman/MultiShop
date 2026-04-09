@@ -1,5 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-
+using AutoMapper;
 namespace MultiShop.Catalog.Entities
 {
     public class Product
