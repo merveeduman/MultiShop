@@ -7,6 +7,8 @@ using MultiShop.Order.Application.Interfaces;
 using MultiShop.Order.Persistence.Context;
 using MultiShop.Order.Persistence.Repositories;
 using MultiShop.Order.Application.Services;
+using System.Reflection;
+using MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandlers;
 
 namespace Presentation
 {
@@ -28,7 +30,9 @@ namespace Presentation
 
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped(typeof(IOrderingRepository), typeof(OrderingRepository));
-            builder.Services.AddApplicationService();
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            builder.Services.AddScoped(typeof(IOrderingRepository), typeof(OrderingRepository));
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetOrderingQueryHandler).Assembly));
 
             #region
             builder.Services.AddScoped<GetAddressQueryHandler>();

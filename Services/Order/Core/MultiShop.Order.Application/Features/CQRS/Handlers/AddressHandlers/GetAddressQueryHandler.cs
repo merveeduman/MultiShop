@@ -22,7 +22,7 @@ namespace MultiShop.Order.Application.Features.CQRS.Commands.AddressCommands
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetAddressQueryResult
             {
-                AdressId = x.AdressId,
+                AddressId = x.AddressId,
                 UserId = x.UserId,
                 District = x.District,
                 City = x.City,

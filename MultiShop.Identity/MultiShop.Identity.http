@@ -1,0 +1,12 @@
+@MultiShop.Identity_HostAddress = https://localhost:7177
+
+POST {{MultiShop.Identity_HostAddress}}/api/registers
+Content-Type: application/json
+
+{
+  "username": "merve",
+  "email": "merve@test.com",
+  "name": "Merve",
+  "surname": "Eduman",
+  "password": "Merve123!"
+}
